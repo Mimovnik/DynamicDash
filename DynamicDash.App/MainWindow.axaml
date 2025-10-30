@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        x:Class="DynamicDash.App.MainWindow"
+        Title="DynamicDash">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Widget Container -->
+        <ScrollViewer Grid.Row="0" Padding="10" Background="#F3F8FD">
+            <WrapPanel x:Name="WidgetContainer" Orientation="Horizontal">
+                <!-- Widgets will be added here programmatically -->
+            </WrapPanel>
+        </ScrollViewer>
+
+        <!-- Control and Status Panel -->
+        <Border Grid.Row="1" Background="#E4F0FF" Padding="12" BorderBrush="#1565C0" BorderThickness="0,1,0,0">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="24">
+                <StackPanel Orientation="Vertical" Spacing="6" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Enter data:" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0D47A1" />
+                        <TextBox x:Name="DataTextBox" Width="320" Padding="6"
+                                 Watermark="Enter text or numbers to send to widgets..." />
+                        <Button x:Name="SendDataButton" Content="Send data"
+                                Padding="16,6" Background="#1976D2" Foreground="White" />
+                    </StackPanel>
+                    <TextBlock x:Name="StatusLabel" Text="Ready"
+                               FontWeight="SemiBold" Foreground="#0D47A1" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Spacing="4"
+                            HorizontalAlignment="Right">
+                    <TextBlock x:Name="InfoLabel" Text="Widgets: loading..."
+                               Foreground="#0D47A1" FontSize="12" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
